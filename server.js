@@ -19,7 +19,15 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(cors({ origin: '*' }));
+// app.use(cors({ origin: '*' }));
+app.use(cors({
+  origin: [
+    'https://employee-fronted.vercel.app',
+    'http://localhost:4200'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get('/', (req, res) => {
